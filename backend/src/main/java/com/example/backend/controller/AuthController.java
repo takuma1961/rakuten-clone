@@ -13,16 +13,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.dto.LoginRequest;
+import com.example.backend.dto.RegisterRequest;
+import com.example.backend.services.UserService;
 
 @RestController
 public class AuthController {
 	private final AuthenticationManager authenticationManager;
+	private final UserService userService;
 
-	public AuthController(AuthenticationManager authenticationManager) {
+	public AuthController(AuthenticationManager authenticationManager, UserService userService) {
 		this.authenticationManager = authenticationManager;
+		this.userService = userService;
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/api/auth/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 		try {
 			Authentication authentication = authenticationManager.authenticate(
@@ -36,4 +40,13 @@ public class AuthController {
 		}
 	}
 
+	@PostMapping("/api/auth/register")
+	public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+		try {
+			userService.register(request.getUsername(), request.getPassword());
+			return ResponseEntity.ok(Map.of("message", "User registered successfully"));
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 }

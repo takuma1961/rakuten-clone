@@ -1,0 +1,24 @@
+package com.example.backend.services;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.example.backend.repositories.UserRepository;
+
+public class UserService {
+
+	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
+
+	public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
+
+	public void register(String username, String rawPassword) {
+
+		if (userRepository.existsByUsername(username)) {
+			throw new IllegalArgumentException("Username already exists");
+		}
+
+	}
+}

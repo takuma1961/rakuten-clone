@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Box, Button, TextField, Typography, Container, Alert } from "@mui/material";
+import { Link, Box, Button, TextField, Typography, Container, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -83,6 +84,11 @@ const LoginPage = () => {
           >
             ログイン
           </Button>
+          <Box sx={{ mt: 2, textAlign: 'center' }}>
+            <Link component={RouterLink} to="/RegisterPage">
+              新規会員登録はこちら
+            </Link>
+          </Box>
         </Box>
       </Box>
     </Container>
