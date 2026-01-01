@@ -1,0 +1,21 @@
+.product-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+  width: 100%;
+}
+
+.product-list-container h1 {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.product-list-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list-container li {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+}
