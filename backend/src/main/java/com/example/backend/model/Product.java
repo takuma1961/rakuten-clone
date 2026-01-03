@@ -1,25 +1,60 @@
 package com.example.backend.model;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "products")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String name;
-	private Integer price;
+	private Long id;
 
-	public long getId() {
+	@Column(nullable = false)
+	private String name;
+
+	@Column(nullable = false)
+	private BigDecimal  price;
+
+	@Column(length = 2000)
+	private String description;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "product_categories", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private List<Category> categories = new ArrayList<>();
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Product))
+			return false;
+		Product product = (Product) o;
+		return id != null && id.equals(product.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -27,16 +62,32 @@ public class Product {
 		return name;
 	}
 
-	public void setName(String Name) {
-		this.name = Name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Integer getPrice() {
+	public BigDecimal  getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(BigDecimal  price) {
 		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 
 }

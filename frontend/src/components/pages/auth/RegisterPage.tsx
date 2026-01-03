@@ -81,7 +81,7 @@ const RegisterPage: React.FC = () => {
                 <Box sx={{ width: '100%' }}>
                     <RegisterForm handleSubmit={handleSubmit} />
                     <Box sx={{ mt: 3, textAlign: 'center' }}>
-                        <Link component={RouterLink} to="/login">
+                        <Link component={RouterLink} to="/">
                             すでにアカウントをお持ちですか？ログイン
                         </Link>
                     </Box>

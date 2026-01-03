@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProductList from "./components/pages/products/ProductList"
+import ProductsContainer from "./components/pages/products/ProductsContainer"
 import Header from "./components/layout/Header"
 import Footer from "./components/layout/Footer"
 import LoginPage from "./components/pages/auth/LoginPage"
@@ -20,7 +20,7 @@ function App() {
         <Box component="main" sx={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/productList" element={<ProductList />} />
+            <Route path="/ProductsContainer" element={<ProductsContainer />} />
             <Route path="/RegisterPage" element={<RegisterPage />} />
           </Routes>
         </Box>

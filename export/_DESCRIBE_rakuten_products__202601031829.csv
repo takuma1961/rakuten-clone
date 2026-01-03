@@ -1,0 +1,4 @@
+"Field","Type","Null","Key","Default","Extra"
+id,bigint,NO,PRI,,auto_increment
+name,varchar(255),YES,"",,""
+price,int,YES,"",,""

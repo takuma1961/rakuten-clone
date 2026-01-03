@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-import { API_BASE_URL } from "../../env-config";
 
 /**
  * API Request to get user's information.
@@ -30,7 +29,7 @@ import { API_BASE_URL } from "../../env-config";
  * @returns Response.
  */
 export const getUserInfo = async (username: string) => {
-    const response = await fetch(`${API_BASE_URL}/api/user/${username}`, {
+    const response = await fetch(`/api/user/${username}`, {
         headers: { 'Content-Type': 'application/json' }
     })
 

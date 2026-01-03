@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.dto.LoginRequest;
@@ -17,6 +18,7 @@ import com.example.backend.dto.RegisterRequest;
 import com.example.backend.services.UserService;
 
 @RestController
+@RequestMapping("/api/auth")
 public class AuthController {
 	private final AuthenticationManager authenticationManager;
 	private final UserService userService;
@@ -26,7 +28,7 @@ public class AuthController {
 		this.userService = userService;
 	}
 
-	@PostMapping("/api/auth/login")
+	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 		try {
 			Authentication authentication = authenticationManager.authenticate(
@@ -40,7 +42,7 @@ public class AuthController {
 		}
 	}
 
-	@PostMapping("/api/auth/register")
+	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
 		try {
 			userService.register(request.getUsername(), request.getPassword());

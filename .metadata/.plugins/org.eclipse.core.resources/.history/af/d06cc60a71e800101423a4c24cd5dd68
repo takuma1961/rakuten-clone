@@ -1,0 +1,10 @@
+package com.example.backend.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = Categorys)
+public class Category {
+
+}
