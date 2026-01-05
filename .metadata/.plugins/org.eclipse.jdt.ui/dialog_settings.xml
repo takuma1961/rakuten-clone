@@ -17,8 +17,8 @@
 	<section name="quick_assist_proposal_size">
 	</section>
 	<section name="NewClassCreationWizard.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="410"/>
-		<item key="DIALOG_Y_ORIGIN" value="-32"/>
+		<item key="DIALOG_X_ORIGIN" value="314"/>
+		<item key="DIALOG_Y_ORIGIN" value="-96"/>
 		<item key="DIALOG_WIDTH" value="647"/>
 		<item key="DIALOG_HEIGHT" value="751"/>
 		<item key="DIALOG_FONT_NAME" value="1|Sans|10.0|0|GTK|1|"/>
@@ -41,8 +41,8 @@
 		<item key="RemoveFinal" value="false"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="96"/>
-		<item key="DIALOG_Y_ORIGIN" value="-8"/>
+		<item key="DIALOG_X_ORIGIN" value="32"/>
+		<item key="DIALOG_Y_ORIGIN" value="-72"/>
 		<item key="DIALOG_WIDTH" value="635"/>
 		<item key="DIALOG_HEIGHT" value="768"/>
 		<item key="DIALOG_FONT_NAME" value="1|Sans|10.0|0|GTK|1|"/>

@@ -35,7 +35,7 @@ const LoginPage = () => {
       console.log("ログイン成功:", data);
 
       // 成功したら商品一覧へ
-      navigate("/products");
+      navigate("/ProductsContainer");
 
     } catch (err) {
       setError("サーバーに接続できません");

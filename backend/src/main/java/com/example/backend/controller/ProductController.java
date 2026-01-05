@@ -2,26 +2,32 @@ package com.example.backend.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.backend.dto.ProductListResponse;
 import com.example.backend.model.Product;
 import com.example.backend.repositories.ProductRepository;
+import com.example.backend.services.ProductService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
-	private final ProductRepository repo;
 
-	public ProductController(ProductRepository repo) {
-		this.repo = repo;
+	private final ProductService productService;
+
+	public ProductController(ProductService productService) {
+		this.productService = productService;
 	}
 
-	@GetMapping
-	public List<Product> getAllProducts() {
-		return repo.findAll();
+	@GetMapping("path")
+	public ResponseEntity<ProductListResponse> getProducts(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size) {
+		return ResponseEntity.ok(productService.getProducts(page, size));
 	}
+
 }

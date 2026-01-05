@@ -1,0 +1,14 @@
+package com.example.backend.services;
+
+import org.springframework.stereotype.Service;
+
+import com.example.backend.repositories.ProductRepository;
+
+@Service
+public class ProductService {
+	private final ProductRepository productRepository;
+
+	public ProductService(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+}

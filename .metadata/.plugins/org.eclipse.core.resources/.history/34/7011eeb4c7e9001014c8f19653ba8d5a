@@ -1,0 +1,25 @@
+package com.example.backend.services;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.example.backend.repositories.ProductRepository;
+
+@Service
+public class ProductService {
+	private final ProductRepository productRepository;
+
+	public ProductService(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+
+	// 商品一覧取得用のページング情報を作成
+	// ・page : 何ページ目を取得するか（0 = 1ページ目）
+	// ・size : 1ページに表示する商品数
+	// ・並び順 : id を基準に降順（登録が新しい順）
+	public ProductListResponse getProducts(int page, int size) {
+
+		PageRequest pageable = PageRequest.of(page, size, Sort.by("id").descending());
+	}
+}

@@ -1,0 +1,25 @@
+package com.example.backend.services;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.example.backend.repositories.ProductRepository;
+
+@Service
+public class ProductService {
+	private final ProductRepository productRepository;
+
+	public ProductService(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+
+	// Pageable settings for product list retrieval
+	// - page: zero-based page index
+	// - size: number of items per page
+	// - sort: id DESC (newest products first)
+	public ProductListResponse getProducts(int page, int size) {
+
+		PageRequest pageable = PageRequest.of(page, size, Sort.by("id").descending());
+	}
+}

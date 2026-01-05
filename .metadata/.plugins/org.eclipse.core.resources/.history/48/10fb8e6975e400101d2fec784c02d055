@@ -1,7 +1,0 @@
-package com.example.backend.repositories;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public class ProductRepository implements JpaRepository<T, ID> {
-
-}
