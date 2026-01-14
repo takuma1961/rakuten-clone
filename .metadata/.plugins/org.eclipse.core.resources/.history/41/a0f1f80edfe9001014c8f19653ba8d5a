@@ -1,9 +1,0 @@
-package com.example.backend.dto;
-
-public class ProductResponse {
-	private Long objectID;
-	private String name;
-	private Integer price;
-	private String description;
-	private List<CategoryResponse> categories;
-}

@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="java.lang.Class">
 		<list key="findhistory">
+			<item value="AuthenticationManager"/>
+			<item value="dependency"/>
 			<item value="java.version"/>
 			<item value="properties"/>
 			<item value="authorizeHttpRequests"/>

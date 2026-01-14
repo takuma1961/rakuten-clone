@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.dto.LoginRequest;
 import com.example.backend.dto.RegisterRequest;
+import com.example.backend.security.JwtUtil;
 import com.example.backend.services.UserService;
 
 @RestController
@@ -22,10 +23,12 @@ import com.example.backend.services.UserService;
 public class AuthController {
 	private final AuthenticationManager authenticationManager;
 	private final UserService userService;
+	private final JwtUtil jwtUtil;
 
-	public AuthController(AuthenticationManager authenticationManager, UserService userService) {
+	public AuthController(AuthenticationManager authenticationManager, UserService userService, JwtUtil jwtUtil) {
 		this.authenticationManager = authenticationManager;
 		this.userService = userService;
+		this.jwtUtil = jwtUtil;
 	}
 
 	@PostMapping("/login")
@@ -33,9 +36,11 @@ public class AuthController {
 		try {
 			Authentication authentication = authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+			//20260113 add
+			 String token = jwtUtil.generateToken(request.getUsername());
 
 			//
-			return ResponseEntity.ok(Map.of("message", "login success"));
+			return ResponseEntity.ok(Map.of("token", token));
 
 		} catch (AuthenticationException e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect username or password");
