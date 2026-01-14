@@ -32,6 +32,7 @@ const LoginPage = () => {
       }
 
       const data = await res.json();
+      localStorage.setItem("token", data.token);
       console.log("ログイン成功:", data);
 
       // 成功したら商品一覧へ

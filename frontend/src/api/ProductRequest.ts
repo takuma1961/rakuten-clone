@@ -11,7 +11,6 @@ export const getProducts = async (
   size: number = 10
 ) => {
   const response = await fetch(`/api/product?page=$[page]&size=$[size]`, {
-    method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
     },
